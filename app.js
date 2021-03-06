@@ -21,6 +21,8 @@ const articleSchema = mongoose.Schema({
 
 const Article = mongoose.model("article", articleSchema);
 
+//////////////////////////Requests for All Articles///////////////////////////////
+
 app
   .route("/articles")
 
@@ -53,6 +55,39 @@ app
         console.log(err);
       }
     });
+  });
+
+//////////////////////////Requests for a Specific Article///////////////////////////////
+
+app
+  .route("/articles/:articleTitle")
+
+  .get((req, res) => {
+    Article.findOne({ title: req.params.articleTitle }, (err, foundArticle) => {
+      if (!err) {
+        res.send(foundArticle);
+      } else {
+        res.send("sorry there was an error fetching an article", err);
+      }
+    });
+  })
+
+  .put((req, res) => {
+    Article.update(
+      { title: req.params.articleTitle },
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      { overwrite: true },
+      (err) => {
+        if (!err) {
+          console.log("successfully updated the article");
+        } else {
+          console.log(err);
+        }
+      }
+    );
   });
 
 app.listen(3000, () => {
