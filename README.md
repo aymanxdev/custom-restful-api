@@ -1,6 +1,7 @@
-# Build your own custom RESTful API
+# Build your own custom RESTful API – 
+## Check out my article on [Medium](https://aymanx.medium.com/how-to-build-your-own-restful-api-node-js-mongodb-588b010a37ad)
 
-#### How to use this repo ( Beginner Guide )
+#### How to use this repo and requirements 
 
 - First clone or fork the repositor to your local machine
 - Make sure you have MongoDB and NodeJS installed and set up. 
